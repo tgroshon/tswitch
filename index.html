@@ -1,0 +1,175 @@
+<html>
+<head>
+  <title>Testing TSwitch</title>
+  <!-- Essential Files -->
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script type="text/javascript" src="tswitch/js/jquery.tswitch.js"></script>
+
+  <script type="text/javascript" src="docstyles/syntaxhighlighter/scripts/shCore.js"></script>
+  <script type="text/javascript" src="docstyles/syntaxhighlighter/scripts/shBrushXml.js"></script>
+  <script type="text/javascript" src="docstyles/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+  <link type="text/css" rel="stylesheet" href="docstyles/syntaxhighlighter/styles/shCoreDefault.css"/>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <!-- Just for Display -->
+  <link href="docstyles/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <script type="text/javascript" src="docstyles/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .block{
+      margin-bottom: 30px;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero-unit">
+      <h1>TSwitch <small>sliding switches for the web</small></h1>
+      <div class="row" style="margin-top: 20px">
+        <div class="span4">
+          <p id="tswitcher"></p>
+          <p id="tswitch_status">&nbsp;</p>
+        </div>
+        <div class="span4">
+          <p id="tswitchersmall"></p>
+          <p id="tswitchsmall_status">&nbsp;</p>
+        </div>
+      </div>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <h3 id="reqs">Requirements</h3>
+          <ul>
+            <li><a href="http://jquery.com">jQuery</a></li>
+            <li><a href="http://jqueryui.com">jQuery UI</a></li>
+            <li><a href="/tswitch/tswitch/js/jquery.tswitch.js">TSwitch JS Widget (included)</a></li>
+            <li><a href="#reqs">TSwitch Images (included)</a></li>
+          </ul>
+          <pre class="brush: xml;">
+            &lt;!-- Essential Includes --&gt;
+            &lt;script src="http://code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+            &lt;script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"&gt;&lt;/script&gt;
+            &lt;script type="text/javascript" src="tswitch/js/jquery.tswitch.js"&gt;&lt;/script&gt;
+          </pre>
+        </div>
+      </div><!-- /Row -->
+      <hr>
+      <div class="row">
+        <div class="span6">
+          <h3>Usage</h3>
+          <div class="block"
+            <p>Without Options</p>
+            <code>$("#tswitcher").tswitch()</code>
+          </div>
+          <div class="block"
+            <p>With Options</p>
+            <code>$("#tswitcher").tswitch({imagePath: "/img/", flippedOn: true})</code>
+          </div>
+        </div>
+        <div class="span6">
+          <h3>Options</h3>
+          <div style="padding-left: 10px;">
+            <h4>imagePath</h4>
+            <p>A path to the twsitch images.</p>
+            <h4>flippedOn</h4>
+            <p>Starting state of the switch</p>
+            <h4>size</h4>
+            <p>"default" or "other"</p>
+          </div>
+        </div>
+      </div><!-- /Row -->
+      <hr>
+      <div class="row">
+        <div class="span6">
+          <h3>Methods</h3>
+          <div class="block">
+            <h4>.tswitch("flip")</h4>
+            <p>Manually toggles the switch to the opposite state</p>
+            <code>$('#tswitcher').tswitch("flip")</code>
+          </div>
+          <div class="block">
+            <h4>.tswitch("switchOn")</h4>
+            <p>Manually set switch to on position</p>
+            <code>$('#tswitcher').tswitch("switchOn")</code>
+          </div>
+          <div class="block">
+            <h4>.tswitch("switchOff")</h4>
+            <p>Manually set the switch to off position</p>
+            <code>$('#tswitcher').tswitch("switchOff")</code>
+          </div>
+          <div class="block">
+            <h4>.tswitch("destroy")</h4>
+            <p>Removes switch elements from container</p>
+            <code>$('#tswitcher').tswitch("destroy")</code>
+          </div>
+        </div>
+        <div class="span6">
+          <h3>Events &amp; Callbacks</h3>
+          <div class="block">
+            <h4>tswitchflippedon</h4>
+            <p>Fired on click event, when switch set to 'on' position</p>
+            <code>$('#tswitcher').on('tswitchflippedon', function(event){ ... });</code>
+          </div>
+          <div class="block">
+            <h4>tswitchflippedoff</h4>
+            <p>Fired on click event, when switch set to 'off' position</p>
+            <code>$('#tswitcher').on('tswitchflippedoff', function(event){ ... });</code>
+          </div>
+          <div class="block">
+            <h4>tswitchoncomplete</h4>
+            <p>Fired after every switch from 'on' position</p>
+            <code>$('#tswitcher').on('tswitchoncomplete', function(event){ ... });</code>
+          </div>
+          <div class="block">
+            <h4>tswitchoffcomplete</h4>
+            <p>Fired after every switch to 'off' position</p>
+            <code>$('#tswitcher').on('tswitchoffcomplete', function(event){ ... });</code>
+          </div>
+          <p class="alert alert-info">*Chaining of callbacks is supported</p>
+        </div>
+      </div><!-- /Row -->
+      <div class="row">
+        <div class="span6">
+          <h3>Other Features</h3>
+          <p>Multi-sized buttons</p>
+          <pre class="brush: js;">
+            //default
+            $("#tswitcher").tswitch({size: "default"})
+
+            //small
+            $("#tswitchersmall").tswitch({size: "small"})
+          </pre>
+        </div>
+      </div>
+    </div><!-- /Container -->
+  </div>
+
+  <footer class="container">
+    <div class="row">
+      <div class="span12">
+        <h4>Happy Coding</h4>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    $(function(){
+
+      $("#tswitcher").tswitch().on("tswitchflippedon", function(e){
+          $("#tswitch_status").text("Switch Turned On");
+        }).on("tswitchflippedoff", function(e){
+          $("#tswitch_status").text("Switch Turned Off");
+      });
+
+      $("#tswitchersmall").tswitch({size: "small"}).on("tswitchflippedon", function(e){
+          $("#tswitchsmall_status").text("Small Switch Turned On");
+        }).on("tswitchflippedoff", function(e){
+          $("#tswitchsmall_status").text("Small Switch Turned Off");
+      });
+
+    });//Document Ready
+  </script>
+</body>
+</html>
