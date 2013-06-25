@@ -9,7 +9,7 @@ Creates an 'on/off' sliding switch button with jQuery, CSS, and images.
 
 Usage:
 -------
-$('#selector').tswitch();
+    $('#selector').tswitch();
 
 Methods:
 -------
